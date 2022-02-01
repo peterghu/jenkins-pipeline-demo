@@ -1,27 +1,10 @@
 pipeline {
-
-    agent any
-
+    agent { docker { image 'jupyter/datascience-notebook:latest' } }
     stages {
-        stage("init") {
+        stage('Build') {
             steps {
-                echo 'Init stage'
+                sh 'python --version'
             }
         }
-        stage("build") {
-            steps {
-                echo 'Build stage'
-            }
-        }
-        stage("test") {
-            steps {
-                echo 'Test stage'
-            }
-        }
-        stage("deploy") {
-            steps {
-                echo 'Deplay stage'
-            }
-        }
-    }   
+    }
 }
