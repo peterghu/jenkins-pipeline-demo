@@ -1,7 +1,7 @@
 pipeline {
-    agent { docker { image 'jupyter/datascience-notebook:latest' } }
+    agent { docker { image 'python:3.10.1-alpine' } }
     stages {
-        stage('Build') {
+        stage('build') {
             steps {
                 sh 'python --version'
             }
