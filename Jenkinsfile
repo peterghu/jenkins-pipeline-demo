@@ -30,6 +30,7 @@ pipeline {
 
         stage('Push Image') {
 			      steps {
+                sh 'docker tag jupyter/datascience-notebook traviscancode604/build-pipeline-demo'
 				        sh 'docker images'
 			}
 		}
