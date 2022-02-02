@@ -4,7 +4,7 @@ pipeline {
         stage('Build') { 
             agent {
                 docker {
-                    image 'jupyter/datascience-notebook'
+                    image 'jupyter/datascience-notebook:latest'
                 }
             }
             steps {
