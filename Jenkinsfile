@@ -32,6 +32,7 @@ pipeline {
 			      steps {
                 sh 'docker tag jupyter/datascience-notebook traviscancode604/build-pipeline-demo'
 				        sh 'docker images'
+                sh 'docker push traviscancode604/build-pipeline-demo:latest'
 			}
 		}
 
