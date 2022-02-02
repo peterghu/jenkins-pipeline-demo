@@ -1,9 +1,14 @@
 pipeline {
-    agent { docker { image 'python:3.10.1-alpine' } }
+    agent none 
     stages {
-        stage('build') {
+        stage('Build') { 
+            agent {
+                docker {
+                    image 'jupyter/datascience-notebook'
+                }
+            }
             steps {
-                sh 'python --version'
+                echo 'Testing Build Stage'
             }
         }
     }
