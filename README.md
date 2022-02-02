@@ -32,11 +32,29 @@ Please have all of the following configured and ready to use on your local machi
 3. To use **Docker** to launch a container running an image of **Jenkins**, run the `runMe.sh` Shell command in the CLI for local repo directory and follow the directions of the on-screen prompts (e.g.: type `sh runMe.sh` and enter passwords went prompted).
   > Note: For more details on what is included in the Shell command, please see the [Jenkins Support](https://www.jenkins.io/doc/book/installing/docker/) website.
 
-By this point, a **Jenkins** will be de deployed on your local machine, but you will need to perform a one time set up. This is outliend in the subsequent steps. If additional support is needed, please see the [Jenkins post-installation setup wizard page](https://www.jenkins.io/doc/book/installing/docker/#setup-wizard).
+By this point, a **Jenkins** container will be de running on your local machine, but you will need to perform a one time set up. This is outliend in the subsequent steps. If additional support is needed, please see the [Jenkins post-installation setup wizard page](https://www.jenkins.io/doc/book/installing/docker/#setup-wizard). You will need the intial admin password from the Docker log for the myjenkins-blueocean container.
 
-4. In the CLI type: `sudo cat /var/lib/jenkins/secrets/initialAdminPassword` to obtain the initial admin password (e.g.: 44543046bf40427a867cf336f1f5f62b).
+4. In the CLI type: `docker logs <cotainer ID for myjenkins-blueocean:2.319.2-1>` to obtain the initial admin password. it will appear in the following message:
+```pt
+*************************************************************
+*************************************************************
+*************************************************************
+
+Jenkins initial setup is required. An admin user has been created and a password generated.
+Please use the following password to proceed to installation:
+
+7c5d354a49c241748bed58e0a7486b8f
+
+This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
+
+*************************************************************
+*************************************************************
+*************************************************************
+
+```
 5. Open your browser and go to the webpage http://localhost:8080/ to access Jenkins.
-6. Type in the intial password and follow the prompts on screen. Follow the instructions in the Jenkins post-installation setup wizard if the on-screen prompts are unclear.
+6. Type in the intial password and follow the prompts on screen to unlock Jenkins. 
+  > Note: Please pollow the instructions in the Jenkins post-installation setup wizard if the on-screen prompts are unclear.
 
 
 Note to self: We need to give the jenkins user sudo privileges in order to be able to run Docker commands inside the containe. Need to add `sudo usermod -a -G docker jenkins` to the runMe.sh file.
