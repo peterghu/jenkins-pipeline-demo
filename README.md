@@ -13,7 +13,7 @@ README last updated: February 01, 2022
 
 ## Introduction
 
-a
+As the virtual machine will be acting as the Jenkins and Development server, no credentials have been defined.
 
 ---
 
@@ -38,8 +38,24 @@ By this point, a **Jenkins** will be de deployed on your local machine, but you 
 5. Open your browser and go to the webpage http://localhost:8080/ to access Jenkins.
 6. Type in the intial password and follow the prompts on screen. Follow the instructions in the Jenkins post-installation setup wizard if the on-screen prompts are unclear.
 
+
+Note to self: We need to give the jenkins user sudo privileges in order to be able to run Docker commands inside the containe. Need to add `sudo usermod -a -G docker jenkins` to the runMe.sh file.
+
+
 # Part 2 - Jenkins Pipeline
-1. In Jenkins, click New Item.
+1. In Jenkins, click Manage Jenkins.
+2. Click Manage Plugins
+  - Click Available
+  - Select **Docker Commons**, and click **Install without restart**.
+  - When the Installing Plugins page appears, go to the bottom of the page and select "Restart Jenkins when installation is complete and no jobs are running". Wait for Jenkins to restart.
+  - Repeat this for **Docker Pipeline** and other **Docker** plugins (4 in total?).
+3. Click Global Tool Configuration
+  - Click Add Docker
+  - Give it a name `docker`
+
+
+
+click New Item.
 2. Enter a name for the pipeline (e.g.: jupyterPipeline)
 3. Create a multibranch pipeline.
 4. Under Branch Sources:
