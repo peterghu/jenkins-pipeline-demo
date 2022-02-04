@@ -9,6 +9,8 @@ LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
 # be skipped to shorten build time.
 ARG TEST_ONLY_BUILD
 
+# Ignore errors and continue executing
+# SHELL ["set +e"]
 # Fix DL4006
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -81,9 +83,9 @@ RUN conda install --quiet --yes \
 # Install IJulia as jovyan and then move the kernelspec out
 # to the system share location. Avoids problems with runtime UID change not
 # taking effect properly on the .local folder in the jovyan home dir.
-RUN julia -e 'import Pkg; Pkg.update()' && \
-    (test $TEST_ONLY_BUILD || julia -e 'import Pkg; Pkg.add("HDF5")') && \
-    julia -e "using Pkg; pkg\"add IJulia\"; pkg\"precompile\"" && \
+RUN julia +e 'import Pkg; Pkg.update()' && \
+    (test $TEST_ONLY_BUILD || julia +e 'import Pkg; Pkg.add("HDF5")') && \
+    julia +e "using Pkg; pkg\"add IJulia\"; pkg\"precompile\"" && \
     # move kernelspec out of home \
     mv "${HOME}/.local/share/jupyter/kernels/julia"* "${CONDA_DIR}/share/jupyter/kernels/" && \
     chmod -R go+rx "${CONDA_DIR}/share/jupyter" && \
