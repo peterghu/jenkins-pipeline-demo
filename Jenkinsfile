@@ -10,7 +10,6 @@ pipeline {
             agent {
                 dockerfile {
                     dir 'dockerfiles/jupyterdatascience/.'
-                    label 'custom-jupyter'
                }
             }
             steps {
