@@ -29,7 +29,7 @@ Please have all of the following configured and ready to use on your local machi
 ## Installation / Start-Up
 ### Part 1 - Setup Jenkins Container
 1. Clone this repository to your local machine.
-2. Ensure **Docker** is running on your local machine.
+2. Ensure **Docker** is running on your local machine. You can perform this by typing `systemctl is-active docker` in the CLI.
     - See [Docker Help](https://docs.docker.com/get-docker/) for installation support if you do not already have Docker running on your local machine.
 3. Type `sh runMe.sh` in the CLI of the local repo to run the Shell command. Follow the directions and on-screen prompts to launch a **Docker** container running an image of **Jenkins**.
 
