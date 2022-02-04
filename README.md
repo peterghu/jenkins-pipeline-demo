@@ -3,7 +3,7 @@
 </p>
 
 # Simple Build Pipeline using Jenkins 
-> Objective: Create a simple build pipeline using Jenkins pulling from Github and deploying JupyterLab
+> Objective: Create a simple build pipeline using Jenkins pulling from Github and deploying JupyterLab.
 
 ---
 ## Table of Contents
@@ -11,7 +11,6 @@
 - [Prerequisites](#prerequisites)
 - [Supporting Documentation](#supporting-documentation)
 
-README last updated: February 02, 2022
 
 ---
 
@@ -140,6 +139,7 @@ While the intent of this README was to include all of the required steps for dem
 
 ### How to Make A Basic Jenkinsfile
 - [Jenkins Tutorial - Build a Python app with PyInstaller](https://www.jenkins.io/doc/tutorials/build-a-python-app-with-pyinstaller/)
+- [Jenkinsfile Pipeline Syntax](https://www.jenkins.io/doc/book/pipeline/syntax/)
 
 ### Pushing Images to Docker Hub via Jenkins
 - [Jenkins Pipeline to Create Docker Image and Push to Dockerhub](https://medium.com/swlh/jenkins-pipeline-to-create-docker-image-and-push-to-docker-hub-721919512f2)
