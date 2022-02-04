@@ -8,10 +8,12 @@ pipeline {
     stages {
         stage('Build') { 
             agent {
-                docker {
-                    image 'jupyter/datascience-notebook:latest'
-                }
+                dockerfile {
+                    dir 'dockerfiles/jupyterdatascience/.'
+                    label 'custom-jupyter'
+               }
             }
+        }
             steps {
                 echo 'Build Stage Complete'
             }
