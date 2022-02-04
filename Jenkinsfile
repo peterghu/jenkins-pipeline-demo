@@ -10,6 +10,7 @@ pipeline {
             agent {
                 dockerfile {
                     dir 'dockerfiles/jupyterdatascience/.'
+                    label 'my-defined-label'
                }
             }
             steps {
@@ -31,7 +32,8 @@ pipeline {
 
         stage('Push Image') {
 			      steps {
-                sh 'docker tag jupyter/datascience-notebook traviscancode604/build-pipeline-demo'
+                sh 'docker images'
+                sh 'docker tag my-defined-label traviscancode604/build-pipeline-demo'
 				        sh 'docker images'
                 sh 'docker push traviscancode604/build-pipeline-demo:latest'
 			}
