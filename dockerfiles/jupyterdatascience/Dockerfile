@@ -37,7 +37,7 @@ RUN conda install --quiet --yes \
     'widgetsnbextension=3.5.*'\
     'xlrd=1.2.*' \
     && \
-    conda clean --all -f -y && \
+    conda clean --all -f -y
 
 EXPOSE 8888
 
