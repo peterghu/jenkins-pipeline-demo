@@ -2,6 +2,10 @@ FROM python:3.6
 
 WORKDIR /jup
 
+COPY ../../jupyter/video-game-demo.ipynb /jup/video-game-demo.ipynb
+
+COPY ../../jupyter/DATA.csv /jup/DATA.csv
+
 RUN pip install jupyter -U && pip install jupyterlab
 
 RUN pip install pandas
