@@ -7,13 +7,9 @@ pipeline {
 
     stages {
         stage('Build') { 
-            agent {
-                dockerfile {
-                    dir 'dockerfiles/jupyterdatascience/.'
-                    label 'my-defined-label'
-               }
-            }
+            agent any 
             steps {
+                sh 'docker build -t custom-jupyter dockerfiles/jupyterdatascience/.'
                 echo 'Build Stage Complete'
             }
         }
@@ -33,7 +29,7 @@ pipeline {
         stage('Push Image') {
 			      steps {
                 sh 'docker images'
-                sh 'docker tag my-defined-label traviscancode604/build-pipeline-demo'
+                sh 'docker tag custom-jupyter traviscancode604/build-pipeline-demo'
 				        sh 'docker images'
                 sh 'docker push traviscancode604/build-pipeline-demo:latest'
 			}
