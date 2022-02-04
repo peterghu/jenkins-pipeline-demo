@@ -13,11 +13,11 @@ pipeline {
                     label 'custom-jupyter'
                }
             }
-        }
             steps {
                 echo 'Build Stage Complete'
             }
         }
+      
         stage('Test') { 
             agent any
             steps {
