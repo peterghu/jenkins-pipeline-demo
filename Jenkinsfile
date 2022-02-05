@@ -2,7 +2,7 @@ pipeline {
     agent any 
 
 	  environment {
-		    DOCKERHUB_CREDENTIALS = credentials('dockerhub-travis')
+		    DOCKERHUB_CREDENTIALS = credentials('docker-creds')
 	  }
 
     stages {
@@ -37,7 +37,7 @@ pipeline {
                 sh 'docker images'
                 sh 'docker tag jupyter-travis traviscancode604/build-pipeline-demo'
 				        sh 'docker images'
-                sh 'docker push traviscancode604/build-pipeline-demo:latest'
+                sh 'docker push traviscancode604/build-pipeline-demo:beta'
                 echo 'Push Stage Complete'
 			}
 		}
