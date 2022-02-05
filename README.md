@@ -11,11 +11,12 @@
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
   - [Part 1 - Setup Jenkins Container](#part-1---setup-jenkins-container)
-  - Part 2 - Jenkins Initial Setup
-  - Part 3 - Adding Docker Credentials into Jenkins
-  - Part 4 - Creating A Jenkins Pipeline
-- Post Setup
-  - Part 5 - Running JupyterLab Image
+  - [Part 2 - Jenkins Initial Setup](#part-2---jenkins-initial-setup)
+  - [Part 3 - Adding Docker Credentials into Jenkins](#part-3---adding-docker-credentials-into-jenkins)
+  - [Part 4 - Create Docker Hub Repo and Update Jenkinsfile](#part-4---create-docker-hub-repo-and-update-jenkinsfile)
+  - [Part 5 - Creating A Jenkins Pipeline](#part-5---creating-a-jenkins-pipeline)
+- [Post Setup](#post-setup)
+  - [Part 6 - Start JupyterLab](#part-6---start-jupyterlab)
 - [Supporting Documentation](#supporting-documentation)
 
 
@@ -91,7 +92,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 
 <br>
 
-### Step 3 - Adding Docker Credentials into Jenkins
+### Part 3 - Adding Docker Credentials into Jenkins
 1. Click Manage Jenkins
 2. Click Manage Credentials
 3. Under Stores Scoped to Jenkins, click Jenkins
@@ -100,22 +101,28 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 6. Fill out username, password and a meaninful description. Name the ID `docker-creds` so that the Jenkinsfile can read these credentials.
 7. Click **Ok** when finished.
 
+<p align = "center">
+        <img src='./images/dockerhub-creds.PNG' alt='Add Credentials' width = '600'/> 
+</p>
+
 <br>
 
-### Step 4 - Adding Your Docker Hub Repo and Updating the Jenkinsfile 
+### Part 4 - Create Docker Hub Repo and Update Jenkinsfile 
 1. Go to Docker Hub and create a new public repository. For this demo, the repo was named `build-pipeline-demo`.
 
 <p align = "center">
-        <img src='./images/dockerhub-repo.PNG' alt='Jenkins New Item' width = ''/> 
+        <img src='./images/dockerhub-repo.PNG' alt='Docker Hub Repo' width = ''/> 
 </p>
 
 2. Open the Jenkinsfile and edit lines 38 and 40 to have a link to your **Docker Hub** repo.
 
-
+<p align = "center">
+        <img src='./images/jenkinsfile-repo.PNG' alt='Jenkinsfile Changes' width = '600'/> 
+</p>
 
 <br>
 
-### Step 5 - Creating A Jenkins Pipeline
+### Part 5 - Creating A Jenkins Pipeline
 1. From the Jenkins Dashboard, click New Item.
 
 <p align = "center">
@@ -158,7 +165,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 ## Post Setup
 By this point, **Jenkins** will have built a **Docker** image of **JupyterLab** and uploaded it to **Docker Hub**. You can safely leave **Jenkins**. You are also now ready to pull this new Docker image to any machine running **Docker**!
 
-### Step 6 - Start JupyterLab
+### Part 6 - Start JupyterLab
 1. In your CLI, type `docker run -it --rm --name jupyter -p 8888:8888 traviscancode604/build-pipeline-demo`. You should get a message like this in your CLI:
 
 ```pt
