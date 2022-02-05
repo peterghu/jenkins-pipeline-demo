@@ -104,11 +104,14 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 
 ### Step 4 - Adding Your Docker Hub Repo and Updating the Jenkinsfile 
 1. Go to Docker Hub and create a new public repository. For this demo, the repo was named `build-pipeline-demo`.
-2. Open the Jenkinsfile and edit line 38 to have a link to your **Docker Hub** repo.
 
 <p align = "center">
-        Docker Hub Repo picture here.
+        <img src='./images/dockerhub-repo.PNG' alt='Jenkins New Item' width = ''/> 
 </p>
+
+2. Open the Jenkinsfile and edit lines 38 and 40 to have a link to your **Docker Hub** repo.
+
+
 
 <br>
 
@@ -149,7 +152,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 14. When the job is complete, you should see a screen like this:
 
 <p align = "center">
-    Jenkins Blueocean Picture Here.
+    <img src='./images/jenkins-blueocean3.PNG' alt='Finished Job in Blue Ocean Interface' width = '600'/> 
 </p>
 
 ## Post Setup
@@ -171,7 +174,7 @@ http://f6eed57b27b0:8888/lab?token=a20e3ac554e503a621add091cb9c28368eecacd4e8bfb
 You should see a screen like this:
 
 <p align = "center">
-    <img src='./images/jupyter-placeholder1.PNG' alt='JupyterLab (Placeholder 1)' width = '600'/>
+    <img src='./images/jupyter1.PNG' alt='JupyterLab' width = '600'/>
 </p>
 
 <p align = "center">
@@ -182,7 +185,7 @@ You should see a screen like this:
 The Image was built with a data and a Python Notebook included. Double click `demo-notebook.ipynb` to launch the notebook:
 
 <p align = "center">
-    <img src='./images/jupyter-placeholder2.PNG' alt='JupyterLab (Placeholder 2)' width = '600'/>
+    <img src='./images/jupyter2.PNG' alt='JupyterLab with Sample Notebook' width = '600'/>
 </p>
 
 
