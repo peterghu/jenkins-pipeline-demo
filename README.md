@@ -149,12 +149,12 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 
 10. Click **Save** at the bottom of the page.
 11. A new page should load for the pipeline. On the left hand side, click **Open Blue Ocean** to access the Blue Ocean interface. 
+12. Assuming this is your first time on this screen, you will have a prompt that says "This job has not been run". Click **Run**. This will run the **Jenkinsfile** from the Git repository.
 
 <p align = "center">
     <img src='./images/jenkins-blueocean2.PNG' alt='New Job on Blue Ocean Interface' width = '600'/> 
 </p>
 
-12. Assuming this is your first time on this screen, you will have a prompt that says "This job has not been run". Click **Run**. This will run the **Jenkinsfile** from the Git repository.
 13. Click the row with your pipeline name to view the status of the job.
 14. When the job is complete, you should see a screen like this:
 
