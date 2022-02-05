@@ -37,7 +37,7 @@ pipeline {
                 sh 'docker images'
                 sh 'docker tag jupyter-travis traviscancode604/build-pipeline-demo'
 				        sh 'docker images'
-                sh 'docker push traviscancode604/build-pipeline-demo:beta'
+                sh 'docker push traviscancode604/build-pipeline-demo:latest'
                 echo 'Push Stage Complete'
 			}
 		}
