@@ -52,7 +52,7 @@ By this point, a **Jenkins** container will be running on your local machine. Ho
     <img src='./images/docker-containers.PNG' alt='Find Your Docker Container ID' width = ''/>
 </p>
 
-5. In the CLI type: `docker logs <cotainer ID for myjenkins-blueocean:2.319.2-1>` to obtain the initial admin password. it will appear in the following message:
+5. To obtain the initial admin password, type: `docker logs <container ID>` where the container ID is the ID for myjenkins-blueocean:2.319.2-1 in the CLI. The password will appear in the following message:
 
 ```pt
 *************************************************************
@@ -93,7 +93,17 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 <br>
 
 ### Step 3 - Adding Docker Credentials into Jenkins
-Coming soon!
+1. Click Manage Jenkins
+2. Click Manage Credentials
+3. Under Stores Scoped to Jenkins, click Jenkins
+4. Click Global Credentials
+5. Click Add Credentials
+6. Fill out username, password and a meaninful description. Name the ID `docker-creds` so that the Jenkinsfile can read these credentials.
+7. Click **Ok** when finished.
+
+<br>
+
+### Step 4 - Create Docker Hub Repo
 
 <br>
 
@@ -113,6 +123,7 @@ Coming soon!
 
 16. On the new page, give the pipeline a description.
 17. Click the **Pipeline** tab at the top of the page.
+17. Select a definition of **Pipeline Script from SCM**. 
 18. From **SCM**, choose **Git**.
 19. Type your Git repository  path in the **Repository URL field**.
 
@@ -120,7 +131,7 @@ Coming soon!
     <img src='./images/jenkins-pipeline-config.PNG' alt='Setting Up a New Pipeline' width = '600'/> 
 </p>
 
-20. Click **OK** at the bottom of the page.
+20. Click **Save** at the bottom of the page.
 21. On the Jenkins Dashboard, click **Open Blue Ocean** on the lefthand side to access Jenkins’s Blue Ocean interface. 
 
 <p align = "center">
@@ -129,7 +140,11 @@ Coming soon!
 
 22. Assuming this is your first time on this screen, you will have a prompt that says "This job has not been run". Click **Run**. This will run the **Jenkinsfile** from the Git repository.
 23. Click the row with your pipeline name to view the status of the job.
+23. When the job is complete, you should see a screen like this:
 
+<p align = "center">
+    Jenkins Blueocean Picture Here.
+</p>
 
 ## Post Setup
 By this point, **Jenkins** will have built a **Docker** image of **JupyterLab** and uploaded it to **Docker Hub**. You are now ready to pull this Docker image to any machine running **Docker**. 
