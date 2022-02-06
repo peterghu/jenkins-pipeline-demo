@@ -17,7 +17,6 @@
   - [Part 5 - Creating A Jenkins Pipeline](#part-5---creating-a-jenkins-pipeline)
 - [Post Setup](#post-setup)
   - [Part 6 - Start JupyterLab](#part-6---start-jupyterlab)
-- [Troubleshooting](#troubleshooting)
 - [Supporting Documentation](#supporting-documentation)
 
 
@@ -218,74 +217,6 @@ The Image was built with a data and a Python Notebook included. Double click `de
 <p align = "center">
     <img src='./images/jupyter2.PNG' alt='JupyterLab with Sample Notebook' width = '600'/>
 </p>
-
-
----
-
-## Troubleshooting
-If you see an image like this one, something didn't go according to plan: 
-
-
-<p align = "center">
-    Blue Ocean Git Interface Here.
-</p> 
-
-
-You can read the output from the Blue Ocean interface to start troubleshooting, but here are some things to note that might help:
-
-### GitHub
-Blue Ocean will pull from GitHub for the repo that was specified in [part 5](#part-5---creating-a-jenkins-pipeline), so be mindful if you are referrencing my repo or your cloned repo if you went that route.
-
-
-<p align = "center">
-    Blue Ocean Git Interface Here.
-</p>
-
-
-## Docker Hub Credentials in Jenkins
-If you didn't use the ID `docker-creds` detailed in [part 3](#part-3---adding-docker-credentials-into-jenkins), you might see an error similar to this:
-
-
-<p align = "center">
-    Blue Ocean Docker Credential Error Here.
-</p>
-
-
-## Jenkinsfile Location
-We updated the Jenkinsfile in [part 4](), if the file has incorrect links or typos, you might see something similar to this:
-
-
-<p align = "center">
-    Blue Ocean Docker Credential Error Here.
-</p>
-
-
-If you're curious, or want to add in stages one at a time you can start with a bare bones Jenkinsfile like this:
-
-```jenkinsfile
-pipeline {
-
-    agent any
-
-    stages {
-        stage("build") {
-            steps {
-                echo 'Build stage'
-            }
-        }
-        stage("test") {
-            steps {
-                echo 'Test stage'
-            }
-        }
-        stage("deploy") {
-            steps {
-                echo 'Deploy stage'
-            }
-        }
-    }   
-}
-```
 
 ---
 
