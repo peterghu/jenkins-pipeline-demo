@@ -25,7 +25,7 @@
 ## Introduction
 I have writen this README to show how I set up a simple build pipeline using **Jenkins**. While I have tried to be explicit in the steps so that readers can follow along, there may be times where more detail is needed. I have tried to provide additional resources where required to help clarify any background info if it is needed.
 
-My recommendation would be to clone or fork this repo to your GitHub and local machine and update credentials when and where this is required. 
+My recommendation would be to clone or fork this repo to your GitHub and local machine and update credentials where this is required. 
 
 ### My Machine
 Lenovo Legion 5 (15”, AMD) Gaming Laptop
@@ -113,7 +113,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 3. Under Stores Scoped to Jenkins, click Jenkins
 4. Click Global Credentials
 5. Click Add Credentials
-6. Fill out username, password and a meaninful description. Name the ID `docker-creds` so that the Jenkinsfile can read these credentials.
+6. Fill out the username, password and description fields. Name the ID `docker-creds` so that the Jenkinsfile can read these credentials.
 7. Click **Ok** when finished.
 
 <p align = "center">
@@ -123,13 +123,13 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 <br>
 
 ### Part 4 - Create Docker Hub Repo and Update Jenkinsfile 
-1. Go to Docker Hub and create a new public repository. For this demo, the repo was named `build-pipeline-demo`.
+1. Go to Docker Hub and create a new public repository. For this demo, I named the repo `build-pipeline-demo`.
 
 <p align = "center">
         <img src='./images/dockerhub-repo.PNG' alt='Docker Hub Repo' width = ''/> 
 </p>
 
-2. Open the Jenkinsfile and edit lines 38 and 40 to have a link to your **Docker Hub** repo.
+2. I have used `traviscancode604/build-pipeline-demo:latest`, but you will need to update lines 38 and 40 to have a link to your **Docker Hub** repo (no I will not give you my Docker Hub credentials to push to my repo :smirk: ). 
 
 <p align = "center">
         <img src='./images/jenkinsfile-repo.PNG' alt='Jenkinsfile Changes' width = '600'/> 
@@ -138,7 +138,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 <br>
 
 ### Part 5 - Creating A Jenkins Pipeline
-1. From the Jenkins Dashboard, click New Item.
+1. From the Jenkins Dashboard, click **New Item**.
 
 <p align = "center">
     <img src='./images/jenkins-new-item1.PNG' alt='Jenkins New Item' width = ''/> 
@@ -153,6 +153,11 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 
 4. On the new page, give the pipeline a description.
 5. Click the **Pipeline** tab at the top of the page.
+
+<p align = "center">
+    <img src='./images/jenkins-new-pipeline.PNG' alt='Give your pipeline a description.' width = '600'/> 
+</p>
+
 6. Select a definition of **Pipeline Script from SCM**. 
 7. From **SCM**, choose **Git**.
 8. Type `https://github.com/traviscancode604/buildPipelineDemo` in the **Repository URL field**.
