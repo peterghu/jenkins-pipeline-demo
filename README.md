@@ -223,14 +223,19 @@ The Image was built with a data and a Python Notebook included. Double click `de
 ## Supporting Documentation
 While the intent of this README was to include all of the required steps for demonstration, you may be interested in the following topics for a deeper understanding.
 
-### How to Make A Basic Jenkinsfile
-- [Jenkins Tutorial - Build a Python app with PyInstaller](https://www.jenkins.io/doc/tutorials/build-a-python-app-with-pyinstaller/)
-- [Using a Jenkinsfile](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/)
-- [Jenkinsfile Pipeline Syntax](https://www.jenkins.io/doc/book/pipeline/syntax/)
+
+### Docker Support
+- [Get Docker](https://docs.docker.com/get-docker/)
+
+### How to Fork a Repo in GitHub
+- [Fork a repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
+
 
 ### Pushing Images to Docker Hub via Jenkins
 - [Jenkins Pipeline to Create Docker Image and Push to Dockerhub](https://medium.com/swlh/jenkins-pipeline-to-create-docker-image-and-push-to-docker-hub-721919512f2)
 - [How To Push a Docker Image To Docker Hub Using Jenkins](https://medium.com/codex/how-to-push-a-docker-image-to-docker-hub-using-jenkins-487fb1fcbe25)
 
-### How to Fork a Repo in GitHub
-- [Fork a repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
+### How to Make A Basic Jenkinsfile
+- [Jenkins Tutorial - Build a Python app with PyInstaller](https://www.jenkins.io/doc/tutorials/build-a-python-app-with-pyinstaller/)
+- [Using a Jenkinsfile](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/)
+- [Jenkinsfile Pipeline Syntax](https://www.jenkins.io/doc/book/pipeline/syntax/)
