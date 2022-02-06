@@ -25,7 +25,7 @@
 ## Introduction
 I have writen this README to show how I set up a simple build pipeline using **Jenkins**. While I have tried to be explicit in the steps so that readers can follow along, there may be times where more detail is needed. I have tried to provide additional resources where required to help clarify any background info if it is needed.
 
-My recommendation would be to clone or fork this repo to your GitHub (and local machine) and to update the credentials / GitHub / Docker Hub links as noted as we progress through this README. I've tried my best to flag all instances of this in this document. 
+My recommendation would be to fork this repo to your GitHub account and clone to your local machine as we will be adding credentials and updating / GitHub / Docker Hub links where noted as we progress through this README. I've tried my best to flag all instances of this in this document.
 
 **Good luck, and have fun!**
 
@@ -40,7 +40,7 @@ Lenovo Legion 5 (15”, AMD) Gaming Laptop
 - Ubuntu (64-Bit) 
 - 2 VM Processors
 - 4 GB Memory
-- G32 MB Video Memory
+- 32 MB Video Memory
 
 ---
 
@@ -52,7 +52,7 @@ Please have all of the following configured and ready to use on your local machi
 
 ## Installation
 ### Part 1 - Setup Jenkins Container
-1. Clone this repository to your local machine and set up your GitHub repo for this project if you did not clone/fork my repo.
+1. Clone this repository to your local machine and ensure you have set up your GitHub repo for this project.
 2. Ensure **Docker** is running on your local machine. You can see if Docker is running by typing `systemctl is-active docker` in the CLI.
     - See [Docker Help](https://docs.docker.com/get-docker/) for installation support if you do not already have **Docker** running on your local machine.
 3. Type `sh runMe.sh` in the command line interface (CLI) of the local repo to run the Shell command. 
@@ -89,7 +89,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 
 ```
 3. Open your browser and go to the webpage [http://localhost:8080/](http://localhost:8080/) to access **Jenkins**.
-4. Type in the intial password and follow the prompts on screen to unlock **Jenkins**. 
+4. Type in the intial password and click **Continue** to unlock **Jenkins**. 
 
 <p align = "center">
         <img src='./images/setup-jenkins-01-unlock-jenkins-page.jpg' alt='Jenkins Initial Setup' width = '600'/> 
@@ -99,8 +99,8 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 
 5. After unlocking Jenkins, the **Customize Jenkins** page appears. On this page, click **Install suggested plugins**.
 6. When the **Create First Admin User** page appears, specify your details in the respective fields and click **Save and Finish**.
-7. When the **Jenkins is ready** page appears, click **Start using Jenkins**.
-8. When the Jenkins is ready page appears, click Start using Jenkins.
+7. When the **Instance configuration** page appears, leave the Jenkins URL as the default value. click **Save and Finish** at the bottom of the page.
+8. When the **Jenkins is ready** page appears, click **Start using Jenkins**.
 
     > Note: This page may indicate **Jenkins is almost ready!** instead and if so, click **Restart**. If the page doesn’t automatically refresh after a minute, use your web browser to refresh the page manually.
 
@@ -178,7 +178,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
     <img src='./images/jenkins-blueocean2.PNG' alt='New Job on Blue Ocean Interface' width = '600'/> 
 </p>
 
-13. Click the row with your pipeline name to view the status of the job.
+13. Click the new row that appears to view the status of the job.
 14. When the job is complete, you should see a screen like this:
 
 <p align = "center">
@@ -189,7 +189,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 By this point, **Jenkins** will have built a **Docker** image of **JupyterLab** and uploaded it to **Docker Hub**. You can safely leave **Jenkins**. You are also now ready to pull this new Docker image to any machine running **Docker**!
 
 ### Part 6 - Start JupyterLab
-1. In your CLI, type `docker run -it --rm --name jupyter -p 8888:8888 traviscancode604/build-pipeline-demo`. You should get a message like this in your CLI:
+1. In your CLI, type `docker run -it --rm --name jupyter -p 8888:8888 traviscancode604/build-pipeline-demo`. Make sure to use your **Docker Hub** user name / repo (noting that I'm using `traviscancode604/build-pipeline-demo`). You should get a message like this in your CLI:
 
 ```pt
 Serving notebooks from local directory: /home/jovyan
@@ -225,9 +225,12 @@ While the intent of this README was to include all of the required steps for dem
 
 ### How to Make A Basic Jenkinsfile
 - [Jenkins Tutorial - Build a Python app with PyInstaller](https://www.jenkins.io/doc/tutorials/build-a-python-app-with-pyinstaller/)
+- [Using a Jenkinsfile](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/)
 - [Jenkinsfile Pipeline Syntax](https://www.jenkins.io/doc/book/pipeline/syntax/)
 
 ### Pushing Images to Docker Hub via Jenkins
 - [Jenkins Pipeline to Create Docker Image and Push to Dockerhub](https://medium.com/swlh/jenkins-pipeline-to-create-docker-image-and-push-to-docker-hub-721919512f2)
 - [How To Push a Docker Image To Docker Hub Using Jenkins](https://medium.com/codex/how-to-push-a-docker-image-to-docker-hub-using-jenkins-487fb1fcbe25)
 
+### How to Fork a Repo in GitHub
+- [Fork a repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
