@@ -17,6 +17,7 @@
   - [Part 5 - Creating A Jenkins Pipeline](#part-5---creating-a-jenkins-pipeline)
 - [Post Setup](#post-setup)
   - [Part 6 - Start JupyterLab](#part-6---start-jupyterlab)
+- [Troubleshooting](#troubleshooting)
 - [Supporting Documentation](#supporting-documentation)
 
 
@@ -25,7 +26,9 @@
 ## Introduction
 I have writen this README to show how I set up a simple build pipeline using **Jenkins**. While I have tried to be explicit in the steps so that readers can follow along, there may be times where more detail is needed. I have tried to provide additional resources where required to help clarify any background info if it is needed.
 
-My recommendation would be to clone or fork this repo to your GitHub and local machine and update credentials where this is required. 
+My recommendation would be to clone or fork this repo to your GitHub (and local machine) and to update the credentials / GitHub / Docker Hub links as noted as we progress through this README. I've tried my best to flag all instances of this in this document. 
+
+**Good luck, and have fun!**
 
 ### My Machine
 Lenovo Legion 5 (15”, AMD) Gaming Laptop
@@ -46,12 +49,11 @@ Lenovo Legion 5 (15”, AMD) Gaming Laptop
 Please have all of the following configured and ready to use on your local machine:
 - [Docker](https://docs.docker.com/get-docker/)
 
-
 ---
 
 ## Installation
 ### Part 1 - Setup Jenkins Container
-1. Clone this repository to your local machine. 
+1. Clone this repository to your local machine and set up your GitHub repo for this project if you did not clone/fork my repo.
 2. Ensure **Docker** is running on your local machine. You can see if Docker is running by typing `systemctl is-active docker` in the CLI.
     - See [Docker Help](https://docs.docker.com/get-docker/) for installation support if you do not already have **Docker** running on your local machine.
 3. Type `sh runMe.sh` in the command line interface (CLI) of the local repo to run the Shell command. 
@@ -103,7 +105,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 
     > Note: This page may indicate **Jenkins is almost ready!** instead and if so, click **Restart**. If the page doesn’t automatically refresh after a minute, use your web browser to refresh the page manually.
 
-9. If required, log in to **Jenkins** with the credentials of the user you just created. You’re ready to start using Jenkins!
+9. If required, log into **Jenkins** with the credentials of the user you just created. You’re ready to start using Jenkins!
 
 <br>
 
@@ -129,11 +131,13 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
         <img src='./images/dockerhub-repo.PNG' alt='Docker Hub Repo' width = ''/> 
 </p>
 
-2. I have used `traviscancode604/build-pipeline-demo:latest`, but you will need to update lines 38 and 40 to have a link to your **Docker Hub** repo (no I will not give you my Docker Hub credentials to push to my repo :smirk: ). 
+2. Notice how I have used `traviscancode604/build-pipeline-demo` on lines 38 and 40. Update lines 38 and 40 to reference your **Docker Hub** repo (no I will not give you my Docker Hub credentials to push to my repo :smirk: ).  
 
 <p align = "center">
         <img src='./images/jenkinsfile-repo.PNG' alt='Jenkinsfile Changes' width = '600'/> 
 </p>
+
+3. Once the Jenkinsfile has been updated, don't forget to push it to your GitHub project repo (so that the pipeline can read the file in part 5).
 
 <br>
 
@@ -160,7 +164,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 
 6. Select a definition of **Pipeline Script from SCM**. 
 7. From **SCM**, choose **Git**.
-8. Type `https://github.com/traviscancode604/buildPipelineDemo` in the **Repository URL field**.
+8. Type your GitHub Repo for this project into the **Repository URL field**. Mine is `https://github.com/traviscancode604/buildPipelineDemo`  
 9. Under branches to build, select the appropraite branch. For my repo, this was `main`.
 
 <p align = "center">
@@ -216,6 +220,72 @@ The Image was built with a data and a Python Notebook included. Double click `de
 </p>
 
 
+---
+
+## Troubleshooting
+If you see an image like this one, something didn't go according to plan: 
+
+
+<p align = "center">
+    Blue Ocean Git Interface Here.
+</p> 
+
+
+You can read the output from the Blue Ocean interface to start troubleshooting, but here are some things to note that might help:
+
+### GitHub
+Blue Ocean will pull from GitHub for the repo that was specified in [part 5](#part-5---creating-a-jenkins-pipeline), so be mindful if you are referrencing my repo or your cloned repo if you went that route.
+
+
+<p align = "center">
+    Blue Ocean Git Interface Here.
+</p>
+
+
+## Docker Hub Credentials in Jenkins
+If you didn't use the ID `docker-creds` detailed in [part 3](#part-3---adding-docker-credentials-into-jenkins), you might see an error similar to this:
+
+
+<p align = "center">
+    Blue Ocean Docker Credential Error Here.
+</p>
+
+
+## Jenkinsfile Location
+We updated the Jenkinsfile in [part 4](), if the file has incorrect links or typos, you might see something similar to this:
+
+
+<p align = "center">
+    Blue Ocean Docker Credential Error Here.
+</p>
+
+
+If you're curious, or want to add in stages one at a time you can start with a bare bones Jenkinsfile like this:
+
+```jenkinsfile
+pipeline {
+
+    agent any
+
+    stages {
+        stage("build") {
+            steps {
+                echo 'Build stage'
+            }
+        }
+        stage("test") {
+            steps {
+                echo 'Test stage'
+            }
+        }
+        stage("deploy") {
+            steps {
+                echo 'Deploy stage'
+            }
+        }
+    }   
+}
+```
 
 ---
 
