@@ -23,7 +23,22 @@
 ---
 
 ## Introduction
+I have writen this README to show how I set up a simple build pipeline using **Jenkins**. While I have tried to be explicit in the steps so that readers can follow along, there may be times where more detail is needed. I have tried to provide additional resources where required to help clarify any background info if it is needed.
 
+My recommendation would be to clone or fork this repo to your GitHub and local machine and update credentials when and where this is required. 
+
+### My Machine
+Lenovo Legion 5 (15”, AMD) Gaming Laptop
+- AMD Ryzen 5 4600H with Radeon Graphics, 3000 MHz 6 Cores, 12 Logical Processors
+- NVIDIA GeForce GTX 1650 
+- 8 GB DDR4 RAM
+- Windows 10 Home
+
+### My Oracle VM Virtual Machine
+- Ubuntu (64-Bit) 
+- 2 VM Processors
+- 4 GB Memory
+- G32 MB Video Memory
 
 ---
 
@@ -39,7 +54,7 @@ Please have all of the following configured and ready to use on your local machi
 1. Clone this repository to your local machine. 
 2. Ensure **Docker** is running on your local machine. You can see if Docker is running by typing `systemctl is-active docker` in the CLI.
     - See [Docker Help](https://docs.docker.com/get-docker/) for installation support if you do not already have **Docker** running on your local machine.
-3. Type `sh runMe.sh` in the command line interface (CLI) of the local repo to run the Shell command. Follow the directions and on-screen prompts to launch a **Docker** container running an image of **Jenkins**.
+3. Type `sh runMe.sh` in the command line interface (CLI) of the local repo to run the Shell command. 
 
 By this point, a **Jenkins** container will be running on your local machine. However, if this is your first time running **Jenkins** on this machine, you will need to perform a one time setup. This is outlined in Part 2. If additional support is needed, please see the [Jenkins post-installation setup wizard page](https://www.jenkins.io/doc/book/installing/docker/#setup-wizard). You will need the intial admin password from the **Docker** logs for the `myjenkins-blueocean` container.
 > Note: If you ran the `runMe.sh` Shell file but had to leave the set up by this point, you can run the Shell command again to start the **Jenkins** containers. This can be used after the installation is complete as a way to start your **Jenkins** if you wish to explore other **Jenkins** projects.
@@ -140,8 +155,8 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 5. Click the **Pipeline** tab at the top of the page.
 6. Select a definition of **Pipeline Script from SCM**. 
 7. From **SCM**, choose **Git**.
-8. Type your Git repository  path in the **Repository URL field**.
-9. Under branches to build, select the appropraite branch (for my repo, this was `main`)
+8. Type `https://github.com/traviscancode604/buildPipelineDemo` in the **Repository URL field**.
+9. Under branches to build, select the appropraite branch. For my repo, this was `main`.
 
 <p align = "center">
     <img src='./images/jenkins-pipeline-config.PNG' alt='Setting Up a New Pipeline' width = '600'/> 
