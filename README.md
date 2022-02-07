@@ -130,7 +130,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
         <img src='./images/dockerhub-repo.PNG' alt='Docker Hub Repo' width = ''/> 
 </p>
 
-2. Notice how I have used `traviscancode604/build-pipeline-demo` on lines 38 and 40. Update lines 38 and 40 to reference your **Docker Hub** repo (no I will not give you my Docker Hub credentials to push to my repo :smirk: ).  
+2. Open the Jenkinsfile. Notice how I have used `traviscancode604/build-pipeline-demo` on lines 38 and 40. Update lines 38 and 40 to reference your **Docker Hub** repo (no I will not give you my Docker Hub credentials to push to my repo :smirk: ).  
 
 <p align = "center">
         <img src='./images/jenkinsfile-repo.PNG' alt='Jenkinsfile Changes' width = '600'/> 
@@ -212,7 +212,7 @@ You should see a screen like this:
 <br>
 </p>
 
-The Image was built with a data and a Python Notebook included. Double click `demo-notebook.ipynb` to launch the notebook:
+The image was built with a couple of data sets and a Python Notebook included. Double click `demo-notebook.ipynb` to launch the notebook:
 
 <p align = "center">
     <img src='./images/jupyter2.PNG' alt='JupyterLab with Sample Notebook' width = '600'/>
