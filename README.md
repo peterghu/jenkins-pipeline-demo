@@ -3,7 +3,7 @@
 </p>
 
 # Simple Build Pipeline using Jenkins 
-> Objective: Create a simple build pipeline using Jenkins pulling from Github and deploying JupyterLab.
+> Objective: Create a simple build pipeline using Jenkins pulling from GitHub and deploying JupyterLab.
 
 ---
 ## Table of Contents
@@ -23,11 +23,11 @@
 ---
 
 ## Introduction
-I have writen this README to show how I set up a simple build pipeline using **Jenkins**. While I have tried to be explicit in the steps so that readers can follow along, there may be times where more detail is needed. I have tried to provide additional resources where required to help clarify any background info if it is needed.
+I have written this README to show how I set up a simple build pipeline using **Jenkins**. While I have tried to be explicit in the steps so that readers can follow along, there may be times where more detail is needed. I have tried to provide additional resources where required to help clarify any background info if it is needed.
 
 My recommendation would be to fork this repo to your GitHub account and clone to your local machine as we will be adding credentials and updating / GitHub / Docker Hub links where noted as we progress through this README. I've tried my best to flag all instances of this in this document.
 
-**Good luck, and have fun!**
+**Good luck and have fun!**
 
 ### My Machine
 Lenovo Legion 5 (15”, AMD) Gaming Laptop
@@ -36,7 +36,7 @@ Lenovo Legion 5 (15”, AMD) Gaming Laptop
 - 8 GB DDR4 RAM
 - Windows 10 Home
 
-### My Oracle VM Virtual Machine
+### My Oracle VM VirtualBox Virtual Machine
 - Ubuntu (64-Bit) 
 - 2 VM Processors
 - 4 GB Memory
@@ -57,7 +57,7 @@ Please have all of the following configured and ready to use on your local machi
     - See [Docker Help](https://docs.docker.com/get-docker/) for installation support if you do not already have **Docker** running on your local machine.
 3. Type `sh runMe.sh` in the command line interface (CLI) of the local repo to run the Shell command. 
 
-By this point, a **Jenkins** container will be running on your local machine. However, if this is your first time running **Jenkins** on this machine, you will need to perform a one time setup. This is outlined in Part 2. If additional support is needed, please see the [Jenkins post-installation setup wizard page](https://www.jenkins.io/doc/book/installing/docker/#setup-wizard). You will need the intial admin password from the **Docker** logs for the `myjenkins-blueocean` container.
+By this point, a **Jenkins** container will be running on your local machine. However, if this is your first time running **Jenkins** on this machine, you will need to perform a one time setup. This is outlined in Part 2. If additional support is needed, please see the [Jenkins post-installation setup wizard page](https://www.jenkins.io/doc/book/installing/docker/#setup-wizard). You will need the initial admin password from the **Docker** logs for the `myjenkins-blueocean` container.
 > Note: If you ran the `runMe.sh` Shell file but had to leave the set up by this point, you can run the Shell command again to start the **Jenkins** containers. This can be used after the installation is complete as a way to start your **Jenkins** if you wish to explore other **Jenkins** projects.
 
 <br>
@@ -89,7 +89,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 
 ```
 3. Open your browser and go to the webpage [http://localhost:8080/](http://localhost:8080/) to access **Jenkins**.
-4. Type in the intial password and click **Continue** to unlock **Jenkins**. 
+4. Type in the initial password and click **Continue** to unlock **Jenkins**. 
 
 <p align = "center">
         <img src='./images/setup-jenkins-01-unlock-jenkins-page.jpg' alt='Jenkins Initial Setup' width = '600'/> 
@@ -164,7 +164,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 6. Select a definition of **Pipeline Script from SCM**. 
 7. From **SCM**, choose **Git**.
 8. Type your GitHub Repo for this project into the **Repository URL field**. Mine is `https://github.com/traviscancode604/buildPipelineDemo`  
-9. Under branches to build, select the appropraite branch. For my repo, this was `main`.
+9. Under branches to build, select the appropriate branch. For my repo, this was `main`.
 
 <p align = "center">
     <img src='./images/jenkins-pipeline-config.PNG' alt='Setting Up a New Pipeline' width = '600'/> 
@@ -223,13 +223,11 @@ The Image was built with a data and a Python Notebook included. Double click `de
 ## Supporting Documentation
 While the intent of this README was to include all of the required steps for demonstration, you may be interested in the following topics for a deeper understanding.
 
-
 ### Docker Support
 - [Get Docker](https://docs.docker.com/get-docker/)
 
 ### How to Fork a Repo in GitHub
 - [Fork a repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
-
 
 ### Pushing Images to Docker Hub via Jenkins
 - [Jenkins Pipeline to Create Docker Image and Push to Dockerhub](https://medium.com/swlh/jenkins-pipeline-to-create-docker-image-and-push-to-docker-hub-721919512f2)
