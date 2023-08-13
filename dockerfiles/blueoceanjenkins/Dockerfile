@@ -1,4 +1,6 @@
-FROM jenkins/jenkins:2.319.2-jdk11
+# See https://www.jenkins.io/doc/tutorials/create-a-pipeline-in-blue-ocean/
+
+FROM jenkins/jenkins:2.401.3-jdk17
 USER root
 RUN apt-get update && apt-get install -y lsb-release
 RUN curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc \
@@ -9,4 +11,4 @@ RUN echo "deb [arch=$(dpkg --print-architecture) \
   $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
 RUN apt-get update && apt-get install -y docker-ce-cli
 USER jenkins
-RUN jenkins-plugin-cli --plugins "blueocean:1.25.2 docker-workflow:1.27"
+RUN jenkins-plugin-cli --plugins "blueocean:1.27.5 docker-workflow:572.v950f58993843"

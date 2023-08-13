@@ -3,10 +3,12 @@
 </p>
 
 # Simple Build Pipeline using Jenkins 
+
 > Objective: Create a simple build pipeline using Jenkins pulling from GitHub and deploying JupyterLab.
 
 ---
 ## Table of Contents
+
 - [Introduction](#introduction)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
@@ -23,6 +25,7 @@
 ---
 
 ## Introduction
+
 I have written this README to show how I set up a simple build pipeline using **Jenkins**. While I have tried to be explicit in the steps so that readers can follow along, there may be times where more detail is needed. I have tried to provide additional resources where required to help clarify any background info if it is needed.
 
 My recommendation would be to fork this repo to your GitHub account and clone to your local machine as we will be adding credentials and updating / GitHub / Docker Hub links where noted as we progress through this README. I've tried my best to flag all instances of this in this document.
@@ -30,14 +33,16 @@ My recommendation would be to fork this repo to your GitHub account and clone to
 **Good luck and have fun!**
 
 ### My Machine
+
 Lenovo Legion 5 (15”, AMD) Gaming Laptop
 - AMD Ryzen 5 4600H with Radeon Graphics, 3000 MHz 6 Cores, 12 Logical Processors
-- NVIDIA GeForce GTX 1650 
+- NVIDIA GeForce GTX 1650
 - 8 GB DDR4 RAM
 - Windows 10 Home
 
 ### My Oracle VM VirtualBox Virtual Machine
-- Ubuntu (64-Bit) 
+
+- Ubuntu (64-Bit)
 - 2 VM Processors
 - 4 GB Memory
 - 32 MB Video Memory
@@ -45,31 +50,34 @@ Lenovo Legion 5 (15”, AMD) Gaming Laptop
 ---
 
 ## Prerequisites
+
 Please have all of the following configured and ready to use on your local machine:
 - [Docker](https://docs.docker.com/get-docker/)
 
 ---
 
 ## Installation
-### Part 1 - Setup Jenkins Container
-1. Clone this repository to your local machine and ensure you have set up your GitHub repo for this project.
-2. Ensure **Docker** is running on your local machine. You can see if Docker is running by typing `systemctl is-active docker` in the CLI.
-    - See [Docker Help](https://docs.docker.com/get-docker/) for installation support if you do not already have **Docker** running on your local machine.
-3. Type `sh runMe.sh` in the command line interface (CLI) of the local repo to run the Shell command. 
 
-By this point, a **Jenkins** container will be running on your local machine. However, if this is your first time running **Jenkins** on this machine, you will need to perform a one time setup. This is outlined in Part 2. If additional support is needed, please see the [Jenkins post-installation setup wizard page](https://www.jenkins.io/doc/book/installing/docker/#setup-wizard). You will need the initial admin password from the **Docker** logs for the `myjenkins-blueocean` container.
+### Part 1 - Setup Jenkins Container
+
+1. Clone this repository to your local machine and ensure you have set up your GitHub repo for this project.
+2. Ensure **Docker** is running on your local machine (i.e.: type `systemctl is-active docker` for Linux, `launchctl list | grep docker` for Mac, in the CLI).
+    - See [Docker Help](https://docs.docker.com/get-docker/) for installation support if you do not already have **Docker** running on your local machine.
+3. Type `./runMe.sh` in the command line interface (CLI) of the local repo to run the Shell command.
+
+By this point, a **Jenkins** container will be running on your local machine. However, if this is your first time running **Jenkins** on this machine, you will need to perform a one time setup. This is outlined in Part 2. If additional support is needed, please see the [Jenkins post-installation setup wizard page](https://www.jenkins.io/doc/book/installing/docker/#setup-wizard). You will need the initial admin password from the **Docker** logs for the `my-own-jenkins` container.
 > Note: If you ran the `runMe.sh` Shell file but had to leave the set up by this point, you can run the Shell command again to start the **Jenkins** containers. This can be used after the installation is complete as a way to start your **Jenkins** if you wish to explore other **Jenkins** projects.
 
 <br>
 
 ### Part 2 - Jenkins Initial Setup
-1. Type `docker ps -a` in the CLI to find the **Docker** container ID for your `myjenkins-blueocean:2.319.2-1` image.
+1. Type `docker ps -a` in the CLI to find the **Docker** container ID for your `my-own-jenkins:latest` image.
 
 <p align = "center">
     <img src='./images/docker-containers.PNG' alt='Find Your Docker Container ID' width = ''/>
 </p>
 
-2. To obtain the initial admin password, type: `docker logs <container ID>` where the container ID is the ID for myjenkins-blueocean:2.319.2-1 in the CLI. The password will appear in the following message:
+2. To obtain the initial admin password, type: `docker logs <container ID>` where the container ID is the ID for `my-own-jenkins:latest` in the CLI. The password will appear in the following message:
 
 ```pt
 *************************************************************
@@ -109,6 +117,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 <br>
 
 ### Part 3 - Adding Docker Credentials into Jenkins
+
 1. Click Manage Jenkins
 2. Click Manage Credentials
 3. Under Stores Scoped to Jenkins, click Jenkins
@@ -124,6 +133,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 <br>
 
 ### Part 4 - Create Docker Hub Repo and Update Jenkinsfile 
+
 1. Go to Docker Hub and create a new public repository. For this demo, I named the repo `build-pipeline-demo`.
 
 <p align = "center">
@@ -141,6 +151,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 <br>
 
 ### Part 5 - Creating A Jenkins Pipeline
+
 1. From the Jenkins Dashboard, click **New Item**.
 
 <p align = "center">
@@ -186,9 +197,11 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 </p>
 
 ## Post Setup
+
 By this point, **Jenkins** will have built a **Docker** image of **JupyterLab** and uploaded it to **Docker Hub**. You can safely leave **Jenkins**. You are also now ready to pull this new Docker image to any machine running **Docker**!
 
 ### Part 6 - Start JupyterLab
+
 1. In your CLI, type `docker run -it --rm --name jupyter -p 8888:8888 traviscancode604/build-pipeline-demo`. Make sure to use your **Docker Hub** user name / repo (noting that I'm using `traviscancode604/build-pipeline-demo`). You should get a message like this in your CLI:
 
 ```pt
@@ -221,19 +234,24 @@ The image was built with a couple of data sets and a Python Notebook included. D
 ---
 
 ## Supporting Documentation
+
 While the intent of this README was to include all of the required steps for demonstration, you may be interested in the following topics for a deeper understanding.
 
 ### Docker Support
+
 - [Get Docker](https://docs.docker.com/get-docker/)
 
 ### How to Fork a Repo in GitHub
+
 - [Fork a repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
 
 ### Pushing Images to Docker Hub via Jenkins
+
 - [Jenkins Pipeline to Create Docker Image and Push to Dockerhub](https://medium.com/swlh/jenkins-pipeline-to-create-docker-image-and-push-to-docker-hub-721919512f2)
 - [How To Push a Docker Image To Docker Hub Using Jenkins](https://medium.com/codex/how-to-push-a-docker-image-to-docker-hub-using-jenkins-487fb1fcbe25)
 
 ### How to Make A Basic Jenkinsfile
+
 - [Jenkins Tutorial - Build a Python app with PyInstaller](https://www.jenkins.io/doc/tutorials/build-a-python-app-with-pyinstaller/)
 - [Using a Jenkinsfile](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/)
 - [Jenkinsfile Pipeline Syntax](https://www.jenkins.io/doc/book/pipeline/syntax/)
