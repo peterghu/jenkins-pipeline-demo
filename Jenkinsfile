@@ -35,9 +35,9 @@ pipeline {
 			      steps {
                 echo 'Pushing image to Docker Hub'
                 sh 'docker images'
-                sh 'docker tag jupyter-travis traviscancode604/build-pipeline-demo'
+                sh 'docker tag jupyter-travis redcomettech/build-pipeline-demo'
 				        sh 'docker images'
-                sh 'docker push traviscancode604/build-pipeline-demo:latest'
+                sh 'docker push redcomettech/build-pipeline-demo:latest'
                 echo 'Push Stage Complete'
 			}
 		}
