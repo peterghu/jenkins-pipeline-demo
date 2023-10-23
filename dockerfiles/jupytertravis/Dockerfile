@@ -8,9 +8,9 @@ COPY game-genre-data.csv /jup/game-genre-data.csv
 
 COPY game-sales-data.csv /jup/game-sales-data.csv
 
-RUN pip install jupyter -U && pip install jupyterlab
-
 RUN pip install pandas
+
+RUN pip install jupyter -U && pip install jupyterlab
 
 RUN pip install seaborn
 
